@@ -39,30 +39,31 @@
                        {% endfor %}
                    </div>
                    <!-- Left and right controls -->
-                   <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                       <span class="carousel-control-prev-icon" ></span>
+                   <a class="carousel-control-prev" href="#demo" data-slide="prev"><span class="carousel-control-prev-icon" ></span>
                    </a>
-                   <a class="carousel-control-next"  href="#demo" data-slide="next">
-                       <span class="carousel-control-next-icon" ></span>
+                   <a class="carousel-control-next"  href="#demo" data-slide="next"><span class="carousel-control-next-icon" ></span>
                    </a>
                </div>
            </div>
            <div class="col">
+
+               {% set a = ad.author %}
+               {% set userUrl = path('user_show', {'slug': a.slug})  %}
+
                <div class="row mb-3 align-items-center">
-                   <div class="col-4">
-                       <img src="{{ asset('img/el.jpg') }}" alt="Avatar">
+                   <div class="col-3">
+                       <a href="{{ userUrl }}">
+                           <img src="{{ asset('img/el.jpg') }}" class="avatar avatar-medium" alt="{{ a.fullName }}">
+                       </a>
                    </div>
                    <div class="col">
-                        <h3>John Doe</h3>
-                        <span class="badge badge-primary">3 annonces</span>
+                       <a href="{{ userUrl }}">
+                           <h3>{{ a.fullName }}</h3>
+                       </a>
+                        <span class="badge badge-primary">{{ a.ads | length}} annonce(s)</span>
                    </div>
                </div>
-               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aperiam commodi eius exercitationem
-                   facilis fugiat officia officiis quam quasi soluta?</p>
-               <p>Doloribus laudantium quisquam vero vitae voluptas? Quos, temporibus unde? Aliquid corporis doloribus
-                   laborum, minus nihil provident rerum sed sunt tempore.</p>
-               <p>Ab amet animi cum, delectus, eius fugiat harum hic iste itaque praesentium quaerat, qui ratione rem
-                   sed similique voluptates voluptatibus.</p>
+               {{ a.description | raw }}
            </div>
        </div>
     </div>

@@ -46,6 +46,7 @@ class AdController extends AbstractController
                 $manager->persist($image);
             }
 
+            $ad->setAuthor($this->getUser());
             $manager->persist($ad);
             $manager->flush();
 
@@ -95,7 +96,6 @@ class AdController extends AbstractController
             'ad' => $ad
         ]);
     }
-
 
     /**
      * @Route("/ads/{slug}", name="ads_show")
