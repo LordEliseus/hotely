@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ ad.title }} {% endblock %}
+
+{% block body %}
+
+    <div class="ad-title" style="background-image: url({{ asset('img/3.jpg') }})">
+        <div class="container">
+            <h1>{{ ad.title }}</h1>
+            <p>{{ ad.introduction }}</p>
+            <p class="h2">
+                <strong>{{ ad.rooms }} chambres</strong> pour <strong>{{ ad.price }} F CFA / Nuit</strong>
+            </p>
+            <a href="#" class="btn btn-primary">Réserver</a>
+        </div>
+    </div>
+
+    <div class="container">
+       <div class="row">
+           <div class="col-md-8 mb-3">
+                {{ ad.content | raw }}
+               <div id="demo" class="carousel slide"  data-ride="carousel">
+                   <!-- Indicators -->
+                   <ul class="carousel-indicators" >
+                       {% for image in ad.images %}
+                       <li data-target="#demo" data-slide-to="{{ loop.index0 }}" class="{% if loop.first %}active{% endif %} "></li>
+                       {% endfor %}
+                   </ul>
+                   <!-- The slideshow -->
+                   <div class="carousel-inner" >
+                       {% for image in ad.images %}
+                       <div class="carousel-item {% if loop.first %}active{% endif %}" >
+                           <img src="{{ asset('img/14.jpg') }}" alt="Los Angeles" class="img-thumbnail">
+                           <div class="carousel-caption" >
+                               <h3>{{ ad.title }}</h3>
+                               <p>{{ image.caption }} </p>
+                           </div>
+                       </div>
+                       {% endfor %}
+                   </div>
+                   <!-- Left and right controls -->
+                   <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                       <span class="carousel-control-prev-icon" ></span>
+                   </a>
+                   <a class="carousel-control-next"  href="#demo" data-slide="next">
+                       <span class="carousel-control-next-icon" ></span>
+                   </a>
+               </div>
+           </div>
+           <div class="col">
+               <div class="row mb-3 align-items-center">
+                   <div class="col-4">
+                       <img src="{{ asset('img/el.jpg') }}" alt="Avatar">
+                   </div>
+                   <div class="col">
+                        <h3>John Doe</h3>
+                        <span class="badge badge-primary">3 annonces</span>
+                   </div>
+               </div>
+               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aperiam commodi eius exercitationem
+                   facilis fugiat officia officiis quam quasi soluta?</p>
+               <p>Doloribus laudantium quisquam vero vitae voluptas? Quos, temporibus unde? Aliquid corporis doloribus
+                   laborum, minus nihil provident rerum sed sunt tempore.</p>
+               <p>Ab amet animi cum, delectus, eius fugiat harum hic iste itaque praesentium quaerat, qui ratione rem
+                   sed similique voluptates voluptatibus.</p>
+           </div>
+       </div>
+    </div>
+
+{% endblock %}
+
+
