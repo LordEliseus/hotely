@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vos réservations passées et à venir{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <h3>Mes réservations passées</h3>
+
+        <div class="alert alert-info mt-2">
+            <p>Retrouvez mes réservations </p>
+        </div>
+
+        {% for booking in app.user.bookings %}
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="{{ booking.ad.coverImage }}" alt="" class="img-fluid">
+                </div>
+                <div class="col-md-8">
+                    <h4>{{ booking.ad.title }}</h4>
+                    <p>
+                        Réservation n° <strong>{{ booking.id }}</strong><br>
+                        Du {{ booking.startDate | date('d/m/Y') }} au {{ booking.endDate | date('d/m/Y') }} ({{ booking.amount }} F CFA)
+                    </p>
+                    <a href="{{ path('booking_show', {'id': booking.id}) }}" class="btn btn-primary">Voir plus...</a>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+{% endblock %}
+
+

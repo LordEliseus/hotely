@@ -27,7 +27,9 @@ class AdType extends ApplicationType
             ->add('introduction', TextType::class, $this->getConfiguration("Introduction", "Donnez une description générale"))
             ->add('content', TextareaType::class, $this->getConfiguration("Description détaillée", "Tapez une description intéressante"))
             ->add('rooms', IntegerType::class, $this->getConfiguration("Nombres de chambres", "Le nombre de chambres disponible"))
-            ->add('price', MoneyType::class, $this->getConfiguration("Prix par nuit", "Indiquer le prix par nuit"))
+            ->add('price', MoneyType::class, $this->getConfiguration("Prix par nuit", "Indiquer le prix par nuit",[
+                'currency' => 'XOF'
+            ]))
             ->add('images', CollectionType::class, [
                 'entry_type' => ImageType::class,
                 'allow_add' => true
