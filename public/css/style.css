@@ -33,3 +33,21 @@ div.carousel-caption{
     max-width: 24px;
     max-height: 24px;
 }
+
+.avatar-micro{
+    max-width: 20px;
+    max-height: 20px;
+}
+
+span.rating i {
+    color : goldenrod;
+}
+
+.alert a{
+    text-decoration: none;
+}
+
+.alert btn{
+    color: white;
+}
+

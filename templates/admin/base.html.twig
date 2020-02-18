@@ -9,11 +9,11 @@
     {% block stylesheets %}{% endblock %}
 </head>
 <body>
-{% include 'shared/header.html.twig' %}
+{% include 'admin/shared/header.html.twig' %}
 
-    {% block body %}{% endblock %}
+{% block body %}{% endblock %}
 
-{% include 'shared/footer.html.twig' %}
+{% include 'admin/shared/footer.html.twig' %}
 
 <script src="{{ asset('js/jquery-3.1.0.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.js') }}"></script>

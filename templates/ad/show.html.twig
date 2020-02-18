@@ -49,7 +49,44 @@
                    <a class="carousel-control-next"  href="#demo" data-slide="next"><span class="carousel-control-next-icon" ></span>
                    </a>
                </div>
+               <hr>
+
+               {% if ad.comments | length > 0 %}
+                <h3 class="mb-3">Les commentaires : </h3>
+
+                   <div class="alert alert-info">
+                       <h4 class="alert-heading">
+                           <div class="row align-items-center">
+                               <div class="col">
+                                   <p>Note globale donnée par les voyageurs</p>
+                               </div>
+                               <div class="col">
+                                   {% include 'shared/rating.html.twig' with {'rating' : ad.avgRatings} %}
+                                   <br>
+                                   <span>Calculée sur({{ ad.comments | length }}) avis !</span>
+                               </div>
+                           </div>
+                       </h4>
+                   </div>
+
+                   {% for comment in ad.comments %}
+                        <div class="bg-light rounded mb-2 py-3 px-3">
+                             <strong>{{ comment.author.fullName }} : </strong>
+                            <blockquote>
+                                {{ comment.content }}
+                            </blockquote>
+                            <strong>Note: {{ comment.author.fullName }} :</strong>
+                            {% set rating = comment.rating %}
+                            {% include 'shared/rating.html.twig' %}
+                        </div>
+                   {% endfor %}
+
+               {% else %}
+                   <h3>Cette annonce n'a pas encore reçue de commentaires...</h3>
+               {% endif %}
+
            </div>
+
            <div class="col">
 
                {% set a = ad.author %}
