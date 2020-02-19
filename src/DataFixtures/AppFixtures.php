@@ -41,7 +41,7 @@ class AppFixtures extends Fixture
             ->setEmail('eliseus456@gmail.com')
             ->setPicture('http://placehold.it/200x100')
             ->setIntroduction($faker->sentence)
-            ->setDescription('<p>'. join('</p><p>', $faker->paragraphs(3)).'</p>')
+            ->setDescription('<p>'. join('</p><p>', $faker->paragraphs(1)).'</p>')
             ->setHash($this->passwordEncoder->encodePassword($adminUser, 'password'))
             ->addUserRole($adminRole);
         $manager->persist($adminUser);
@@ -61,7 +61,7 @@ class AppFixtures extends Fixture
                 ->setLastName($faker->lastName)
                 ->setEmail($faker->email)
                 ->setIntroduction($faker->sentence())
-                ->setDescription('<p>'. join('</p><p>', $faker->paragraphs(3)).'</p>')
+                ->setDescription('<p>'. join('</p><p>', $faker->paragraphs(1)).'</p>')
                 ->setHash($hash)
                 ->setPicture($picture);
             $manager->persist($user);

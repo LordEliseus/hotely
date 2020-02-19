@@ -150,3 +150,4 @@ class AccountController extends AbstractController
         return $this->render('account/bookings.html.twig');
     }
 }
+
